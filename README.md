@@ -2,12 +2,14 @@
 
 Python plotting notebooks and final results from a 2D square-lattice percolation study using the Newman–Ziff algorithm.
 
-| Notebook | Results |
-| --- | --- |
-| [plotA](A_2DSpeed_DONE/plotA.ipynb) | Algorithm timings, fit, and residuals |
-| [plotB](B_2Dpercolates/plotB.ipynb) | Percolation probabilities, threshold estimates, and finite-size scaling |
-| [plotC](C_2Dprecise/plotC.ipynb) | Order parameter, cluster counts, and susceptibility |
-| [plotD](D_2Dcorrlength_DONE/plotD.ipynb) | Correlation length, peak scaling, and data collapse |
+| Notebook | Results | Figures |
+| --- | --- | --- |
+| [plotA](A_2DSpeed_DONE/plotA.ipynb) | Algorithm timings, fit, and residuals | [PNG figures](figures/plotA/) |
+| [plotB](B_2Dpercolates/plotB.ipynb) | Percolation probabilities, threshold estimates, and finite-size scaling | [PNG figures](figures/plotB/) |
+| [plotC](C_2Dprecise/plotC.ipynb) | Order parameter, cluster counts, and susceptibility | [PNG figures](figures/plotC/) |
+| [plotD](D_2Dcorrlength_DONE/plotD.ipynb) | Correlation length, peak scaling, and data collapse | [PNG figures](figures/plotD/) |
+
+The PNG figures are ready to view or download directly from GitHub.
 
 ## Run the notebooks
 
