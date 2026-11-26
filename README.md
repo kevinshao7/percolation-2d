@@ -18,7 +18,6 @@ python -m pip install -r requirements.txt
 gh release download data-v1 --dir archives
 tar -xf archives/B.tar.zst
 tar -xf archives/D.tar.zst
-jupyter lab
 ```
 
 The C archive comes in three parts. Reassemble it from the repository root before opening `plotC.ipynb`.
@@ -37,9 +36,9 @@ cmd /c 'copy /b archives\C.tar.zst.part1+archives\C.tar.zst.part2+archives\C.tar
 tar -xf archives/C.tar.zst
 ```
 
-Run each notebook from its own folder. The archives restore the NumPy files to the relative paths the notebooks use. Extraction needs about 13 GiB of disk space.
+Start JupyterLab with `jupyter lab` and open each notebook from its own folder. The archives restore the NumPy files to the relative paths the notebooks use. Allow about 20 GiB for the extracted data, downloaded archives, and reassembled C archive.
 
 - A uses the committed timing summary CSV. Empty and unreadable batches were skipped, and the historical ten-slot normalization was retained.
 - B contains the final probability means and uncertainties, stored as statistic × occupation count × direction (X, Y, either).
-- C contains the C7 postprocessed means and uncertainties, stored as occupation count × quantity (order parameter, cluster count, susceptibility) × statistic. The separately retained `finaldata` batch is also included. The broad probability plots use C7 because the older C6 postprocessed directory was unavailable.
+- C contains the C7 postprocessed means and uncertainties, stored as occupation count × quantity (order parameter, cluster count, susceptibility) × statistic. The separately retained `finaldata` batch is also included. The broad occupation-probability plots use C7 because the older C6 postprocessed directory was unavailable. The susceptibility collapse uses the susceptibility column and rescales it by `L^(-gamma/nu)`.
 - D contains the final correlation-length means and uncertainties, stored as occupation count × statistic. The two zero-run arrays are preserved as source artifacts. The plotting code uses the completed lattice sizes.
