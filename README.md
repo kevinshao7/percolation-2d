@@ -15,12 +15,16 @@ From the repository root, install the Python dependencies and fetch the [final d
 
 ```sh
 python -m pip install -r requirements.txt
-gh release download data-v1 --dir archives
+gh release download data-v1 --dir archives --pattern B.tar.zst --pattern D-plot.tar.zst
 tar -xf archives/B.tar.zst
 tar -xf archives/D-plot.tar.zst
 ```
 
-The C archive comes in three parts. Reassemble it from the repository root before opening `plotC.ipynb`.
+The timing notebook uses the CSV already in Git. The command above fetches the B and D archives. To run `plotC.ipynb`, download all three C parts and reassemble them from the repository root.
+
+```sh
+gh release download data-v1 --dir archives --pattern "C-plot.tar.zst.part*"
+```
 
 On macOS or Linux:
 
