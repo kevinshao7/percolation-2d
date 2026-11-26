@@ -1,0 +1,45 @@
+# 2D percolation
+
+Python plotting notebooks and final results from a 2D square-lattice percolation study using the Newman–Ziff algorithm.
+
+| Notebook | Results |
+| --- | --- |
+| [plotA](A_2DSpeed_DONE/plotA.ipynb) | Algorithm timings, fit, and residuals |
+| [plotB](B_2Dpercolates/plotB.ipynb) | Percolation probabilities, threshold estimates, and finite-size scaling |
+| [plotC](C_2Dprecise/plotC.ipynb) | Order parameter, cluster counts, and susceptibility |
+| [plotD](D_2Dcorrlength_DONE/plotD.ipynb) | Correlation length, peak scaling, and data collapse |
+
+## Run the notebooks
+
+From the repository root, install the Python dependencies and fetch the [final data release](https://github.com/kevinshao7/percolation-2d/releases/tag/data-v1). The archive commands require GitHub CLI and a tar implementation with Zstandard support.
+
+```sh
+python -m pip install -r requirements.txt
+gh release download data-v1 --dir archives
+tar -xf archives/B.tar.zst
+tar -xf archives/D.tar.zst
+jupyter lab
+```
+
+The C archive comes in three parts. Reassemble it from the repository root before opening `plotC.ipynb`.
+
+On macOS or Linux:
+
+```sh
+cat archives/C.tar.zst.part{1,2,3} > archives/C.tar.zst
+tar -xf archives/C.tar.zst
+```
+
+On Windows:
+
+```powershell
+cmd /c 'copy /b archives\C.tar.zst.part1+archives\C.tar.zst.part2+archives\C.tar.zst.part3 archives\C.tar.zst'
+tar -xf archives/C.tar.zst
+```
+
+Run each notebook from its own folder. The archives restore the NumPy files to the relative paths the notebooks use. Extraction needs about 13 GiB of disk space.
+
+- A uses the committed timing summary CSV. Empty and unreadable batches were skipped, and the historical ten-slot normalization was retained.
+- B contains the final probability means and uncertainties, stored as statistic × occupation count × direction (X, Y, either).
+- C contains the C7 postprocessed means and uncertainties, stored as occupation count × quantity (order parameter, cluster count, susceptibility) × statistic. The separately retained `finaldata` batch is also included. The broad probability plots use C7 because the older C6 postprocessed directory was unavailable.
+- D contains the final correlation-length means and uncertainties, stored as occupation count × statistic. The two zero-run arrays are preserved as source artifacts. The plotting code uses the completed lattice sizes.
